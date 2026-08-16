@@ -1,21 +1,32 @@
+/* =====================================================
+   HERO
+===================================================== */
+
 .myname {
-    position: absolute;
-    top: 20px;
-    left: 20px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }
-   
-.text-center  {
+
+.text-center {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
+
+/* =====================================================
+   TITRE HERO
+===================================================== */
+
 .hero-title {
   font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+
   font-size: clamp(2.2rem, 4vw, 3.8rem);
   font-weight: 500;
   line-height: 1.2;
+
   max-width: 850px;
 
   color: #ffffff;
@@ -24,208 +35,727 @@
   letter-spacing: -0.5px;
 
   text-shadow:
-    0 4px 25px rgba(0,0,0,0.45);
+    0 4px 25px rgba(0, 0, 0, 0.45);
 }
 
 .hero-title span {
   font-weight: 700;
-  color: #c9457c; /* or plus profond */
+  color: #c9457c;
 }
 
 
-/* =========================
-   NAVBAR RESPONSIVE
-========================= */
+/* =====================================================
+   HEADER
+===================================================== */
 
-/* Header */
-header.absolute {
-  padding: 35px 60px;
+.header {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  padding: 1.5rem 2.5rem;
+
+  box-sizing: border-box;
+
+  z-index: 20;
+
+  /*
+    Fond noir transparent.
+    Le contenu à l'intérieur reste parfaitement opaque.
+  */
+  background: rgba(0, 0, 0, 0.45);
+
+  /*
+    Flou de ce qui se trouve derrière la navbar.
+  */
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  /*
+    Bordure très subtile pour mieux définir la navbar.
+  */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  /*
+    Ombre autour de la navbar.
+  */
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.header-nav {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logoZelv {
+  display: flex;
+  align-items: center;
+
+  flex-shrink: 0;
+
+  text-decoration: none;
+
+  z-index: 2;
+}
+
+.logoZelv img {
+  display: block;
+
+  width: 70px;
+  height: auto;
+
+  /*
+    Le logo reste totalement opaque.
+  */
+  opacity: 1;
+}
+
+
+/* =====================================================
+   LIENS NAVIGATION
+===================================================== */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+
+  gap: 2.5rem;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.nav-links a {
+  display: block;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 0.875rem;
+  font-weight: 500;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.15em;
+
+  /*
+    Texte totalement opaque.
+  */
+  opacity: 1;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.nav-links a:hover {
+  opacity: 0.7;
+}
+
+
+/* =====================================================
+   BOUTON CONTACT
+===================================================== */
+
+.contact-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.75rem 1.75rem;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  /*
+    Bouton noir opaque.
+  */
+  background: #000000;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  white-space: nowrap;
+
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.25);
+
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.contact-button:hover {
+  transform: translateY(-2px);
+
+  background-color: #111111;
+}
+
+
+/* =====================================================
+   HAMBURGER
+===================================================== */
+
+.menu-button {
+  display: none;
+
+  position: relative;
+
+  width: 42px;
+  height: 42px;
+
+  padding: 0;
+
+  background: transparent;
+
+  border: none;
+
+  cursor: pointer;
+
+  z-index: 30;
+}
+
+
+/*
+   Les trois lignes
+*/
+
+.menu-button span {
+  position: absolute;
+
+  left: 50%;
+
+  width: 25px;
+  height: 2px;
+
+  background-color: #ffffff;
+
+  transform: translateX(-50%);
+
+  transition:
+    top 0.3s ease,
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.menu-button span:nth-child(1) {
+  top: 11px;
+}
+
+.menu-button span:nth-child(2) {
+  top: 20px;
+}
+
+.menu-button span:nth-child(3) {
+  top: 29px;
+}
+
+
+/* =====================================================
+   HAMBURGER → X
+===================================================== */
+
+.menu-button.open span:nth-child(1) {
+  top: 20px;
+
+  transform:
+    translateX(-50%)
+    rotate(45deg);
+}
+
+.menu-button.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-button.open span:nth-child(3) {
+  top: 20px;
+
+  transform:
+    translateX(-50%)
+    rotate(-45deg);
+}
+
+
+/* =====================================================
+   MENU MOBILE
+===================================================== */
+
+.mobile-menu {
+  display: none;
+}
+
+
+/* =====================================================
+   TABLETTE
+===================================================== */
+
+@media (max-width: 900px) {
+
+  .header {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .logoZelv img {
+    width: 130px;
+  }
+
+  .nav-links {
+    gap: 1.2rem;
+  }
+
+  .nav-links a {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+  }
+
+  .contact-button {
+    padding: 0.65rem 1.25rem;
+
+    font-size: 0.85rem;
+  }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+  /* -------------------------
+     HEADER
+  ------------------------- */
+
+  .header {
+    padding: 1rem 1.25rem;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+      0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+
+
+  /* -------------------------
+     LOGO
+  ------------------------- */
+
+  .logoZelv img {
+    width: 120px;
+  }
+
+
+  /* -------------------------
+     NAVIGATION DESKTOP
+  ------------------------- */
+
+  .nav-links {
+    display: none;
+  }
+
+
+  /* -------------------------
+     CONTACT DESKTOP
+  ------------------------- */
+
+  .header-nav > .contact-button {
+    display: none;
+  }
+
+
+  /* -------------------------
+     HAMBURGER
+  ------------------------- */
+
+  .menu-button {
+    display: block;
+  }
+
+
+  /* =================================================
+     MENU MOBILE
+  ================================================= */
+
+  .mobile-menu {
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 1.5rem 1.25rem 2rem;
+
+    box-sizing: border-box;
+
+    background: rgba(0, 0, 0, 0.82);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+      0 15px 35px rgba(0, 0, 0, 0.35);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: translateY(-10px);
+
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+
+  /* -------------------------
+     MENU OUVERT
+  ------------------------- */
+
+  .mobile-menu.open {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+  }
+
+
+  /* -------------------------
+     LIENS MOBILE
+  ------------------------- */
+
+  .mobile-menu a {
+    display: block;
+
+    padding: 1rem 0;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 0.85rem;
+    font-weight: 500;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.12em;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+
+    opacity: 1;
+
+    transition: opacity 0.3s ease;
+  }
+
+  .mobile-menu a:hover {
+    opacity: 0.65;
+  }
+
+
+  /* -------------------------
+     CONTACT MOBILE
+  ------------------------- */
+
+  .mobile-menu .mobile-contact {
+    margin-top: 1.5rem;
+
+    padding: 0.8rem 1.5rem;
+
+    text-align: center;
+
+    background: #000000;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    border-radius: 999px;
+
+    box-shadow:
+      0 5px 20px rgba(0, 0, 0, 0.3);
+  }
+
+
+  /* -------------------------
+     TITRE MOBILE
+  ------------------------- */
+
+  .hero-title {
+    width: 90%;
+
+    font-size: clamp(2rem, 9vw, 3rem);
+
+    line-height: 1.15;
+  }
+}
+
+
+/* =====================================================
+   PETITS TÉLÉPHONES
+===================================================== */
+
+@media (max-width: 400px) {
+
+  .header {
+    padding: 0.9rem 1rem;
+  }
+
+  .logoZelv img {
+    width: 105px;
+  }
+
+  .hero-title {
+    width: 92%;
+
+    font-size: 2rem;
+  }
+
+  .mobile-menu {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+
+.hero-title-wrapper {
+  position: relative;
+
+  width: 100%;
+  min-height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: visible;
+
+  padding: 0 4vw;
   box-sizing: border-box;
 }
 
 
-/* Container nav */
-header.absolute nav.flex {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.hero-title {
+  position: relative;
+
+  width: 100%;
+  max-width: 1500px;
+
+  margin: 0 auto;
+
+  font-family:
+    "Inter Tight",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  font-size: clamp(4.5rem, 9vw, 10rem);
+
+  font-weight: 900;
+
+  line-height: 0.78;
+
+  letter-spacing: -0.075em;
+
+  text-align: center;
+
+  color: rgba(252, 253, 253, 0.72);
+
+  -webkit-text-fill-color: rgba(211, 211, 211, 0.72);
+
+  -webkit-text-stroke: 0;
+
+  user-select: none;
 }
 
 
-/* Logo */
-header.absolute .text-white.text-2xl {
-  font-size: 26px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  white-space: nowrap;
-}
+/* =====================================================
+   LIGNES
+===================================================== */
 
+.hero-title span {
+  position: relative;
 
-/* Menu central */
-header.absolute ul.absolute {
-  display: flex;
-  align-items: center;
-  gap: 45px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+  display: block;
 
-
-header.absolute ul.absolute a {
-  color: white;
-  text-decoration: none;
-
-  font-size: 14px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-
-  transition: opacity .3s ease;
-}
-
-
-header.absolute ul.absolute a:hover {
-  opacity: 0.65;
-}
-
-
-/* Bouton contact */
-header.absolute a[href="#contact"] {
-
-  padding: 14px 32px;
-
-  border-radius: 50px;
-
-  color: white;
-
-  font-weight: 600;
-
-  text-decoration: none;
+  width: 100%;
 
   white-space: nowrap;
 
-  transition: transform .3s ease;
+  font-weight: 900;
 
+  color: rgba(190, 190, 190, 0.72);
+
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.72);
+
+  transition:
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.5s ease;
 }
 
 
-header.absolute a[href="#contact"]:hover {
+/* =====================================================
+   COMPOSITION
+===================================================== */
 
-  transform: scale(1.05);
+.hero-title span:nth-child(1) {
+  transform: translateX(-1.5vw);
+}
 
+.hero-title span:nth-child(2) {
+  transform: translateX(2vw);
+}
+
+.hero-title span:nth-child(3) {
+  transform: translateX(-0.5vw);
 }
 
 
+/* =====================================================
+   REFLET
+===================================================== */
 
-/* =========================
+.hero-title span::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(255, 255, 255, 0.18) 0%,
+      rgba(126, 126, 126, 0.05) 15%,
+      transparent 32%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  opacity: 0;
+
+  transition: opacity 0.4s ease;
+}
+
+.hero-title-wrapper:hover .hero-title span::after {
+  opacity: 1;
+}
+
+
+/* =====================================================
    TABLETTE
-========================= */
+===================================================== */
 
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
 
-
-  header.absolute {
-
-    padding: 30px;
-
+  .hero-title-wrapper {
+    padding: 0 3vw;
   }
 
+  .hero-title {
+    font-size: clamp(3.8rem, 9vw, 7rem);
 
-  header.absolute ul.absolute {
-
-    gap: 25px;
-
+    letter-spacing: -0.07em;
   }
 
-
-  header.absolute ul.absolute a {
-
-    font-size: 12px;
-
-    letter-spacing: 1px;
-
+  .hero-title span:nth-child(1) {
+    transform: translateX(-1vw);
   }
 
-
-  header.absolute a[href="#contact"] {
-
-    padding: 12px 24px;
-
+  .hero-title span:nth-child(2) {
+    transform: translateX(1vw);
   }
 
-
+  .hero-title span:nth-child(3) {
+    transform: translateX(0);
+  }
 }
 
 
-
-/* =========================
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
 @media (max-width: 700px) {
 
+  .hero-title-wrapper {
+    width: 100%;
 
-  header.absolute {
+    padding: 0 5vw;
 
-    padding: 20px;
-
+    overflow: hidden;
   }
 
+  .hero-title {
+    width: 100%;
 
-  /* réduction logo */
+    font-size: clamp(2.8rem, 13vw, 5rem);
 
-  header.absolute .text-white.text-2xl {
+    line-height: 0.85;
 
-    font-size: 20px;
+    letter-spacing: -0.065em;
 
+    text-align: left;
   }
 
-
-  /* cache menu */
-
-  header.absolute ul.absolute {
-
-    display: none;
-
+  .hero-title span {
+    white-space: normal;
   }
 
-
-  /* bouton plus compact */
-
-  header.absolute a[href="#contact"] {
-
-    padding: 10px 18px;
-
-    font-size: 14px;
-
+  .hero-title span:nth-child(1),
+  .hero-title span:nth-child(2),
+  .hero-title span:nth-child(3) {
+    transform: none;
   }
-
-
 }
 
 
-
-/* =========================
-   PETITS MOBILES
-========================= */
+/* =====================================================
+   PETIT MOBILE
+===================================================== */
 
 @media (max-width: 400px) {
 
+  .hero-title {
+    font-size: 2.65rem;
 
-  header.absolute .text-white.text-2xl {
-
-    font-size: 18px;
-
+    line-height: 0.88;
   }
-
-
-  header.absolute a[href="#contact"] {
-
-    padding: 9px 14px;
-
-    font-size: 13px;
-
-  }
-
-
 }
